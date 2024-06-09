@@ -5,7 +5,7 @@ A desktop GUI to interact with an LLM agent (chatbot which can use external tool
 
 This project was primarily created for practice purposes. Goal was to learn how to implement an LLM agent with the ReAct framework ([original paper](https://arxiv.org/abs/2210.03629), [quick-read article](https://www.promptingguide.ai/techniques/react)), which means a chatbot which can reason what to do next and can use tools. Additionally, I wanted to learn how to apply sentiment analysis on an agents response.
 
-LLMs can be run locally via [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) or via the OpenAI API (needs an access key).
+Main LLMs can be run locally via [llama-cpp-python](https://github.com/abetlen/llama-cpp-python) or via the OpenAI API (needs an access key). Sentiment analysis is done via a [fine-tuned DistilRoBERTa-base](https://huggingface.co/j-hartmann/emotion-english-distilroberta-base) model and run via the [HF tranformers](https://huggingface.co/docs/transformers/en/main_classes/pipelines) library.
 
 ### Features
 
