@@ -1,0 +1,17 @@
+# settings, environment and auto-generated files
+.pytest_cache
+.venv
+.vscode
+.envrc
+.misc
+__pycache__
+.DS_STORE
+
+# snippets, tests and outdated code
+archive/
+temp/
+
+# llm weights, chat history and test images
+llm_weights/
+history_logs/
+images/

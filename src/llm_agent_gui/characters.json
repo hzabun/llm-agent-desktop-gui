@@ -1,0 +1,34 @@
+{
+    "Goku": {
+        "platform_type": "anime",
+        "platform_name": "Dragon Ball Z"
+    },
+    "Vegeta": {
+        "platform_type": "anime",
+        "platform_name": "Dragon Ball Z"
+    },
+    "Luffy": {
+        "platform_type": "anime",
+        "platform_name": "One Piece"
+    },
+    "Brook": {
+        "platform_type": "anime",
+        "platform_name": "One Piece"
+    },
+    "Subaru": {
+        "platform_type": "anime",
+        "platform_name": "ReZero"
+    },
+    "Link": {
+        "platform_type": "video game",
+        "platform_name": "The Legend of Zelda"
+    },
+    "Gordon Freeman": {
+        "platform_type": "video game",
+        "platform_name": "Half Life"
+    },
+    "Lea": {
+        "platform_type": "video game",
+        "platform_name": "CrossCode"
+    }
+}
