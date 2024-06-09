@@ -45,7 +45,7 @@ pip install -r requirements.txt
     - Follow the custom installation instructions for your machine
     - Alternatively use an OpenAI API key by adding "openai" [here](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/agent.py#L24)
 
-5. Download an LLM and save it under *src/llm_dnd_dm/llm_weights*
+5. Download an LLM and save it under *src/llm_agent_gui/llm_weights*
     - I used [Openhermes 2.5 Mistral 7B - GGUF](https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF)
     - Make sure to update the path name to your LLM in **llm_backend.py** [here](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/llm_backend.py#L26)
     - Tip: 7B models seem to struggle a bit with following ReAct format, bigger models recommended
