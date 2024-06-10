@@ -1,6 +1,8 @@
 # LLM agent desktop GUI
 A desktop GUI to interact with an LLM agent (chatbot which can use external tools).
 
+![simple chat showcase](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/images/simple_chat.gif)
+
 ## Description
 
 This project was primarily created for practice purposes. Goal was to learn how to implement an LLM agent with the ReAct framework ([original paper](https://arxiv.org/abs/2210.03629), [quick-read article](https://www.promptingguide.ai/techniques/react)), which means a chatbot which can reason what to do next and can use tools. Additionally, I wanted to learn how to apply sentiment analysis on an agents response.
@@ -16,6 +18,7 @@ Main LLMs can be run locally via [llama-cpp-python](https://github.com/abetlen/l
 
 Tip: Gordon Freeman is my favorite chat buddy
 
+![game session showcase](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/images/game_session.gif)
 
 ## Installation
 
