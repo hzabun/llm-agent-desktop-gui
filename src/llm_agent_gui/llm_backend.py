@@ -30,7 +30,7 @@ class LlmBackend:
             n_gpu_layers=-1,
         )
 
-        self.inference_llm = self.inference_openai
+        self.inference_llm = self.inference_llama_cpp
 
     def initialize_openai(self):
         self.openai_llm = OpenAI()

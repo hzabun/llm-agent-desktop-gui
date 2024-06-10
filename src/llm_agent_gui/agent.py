@@ -21,7 +21,7 @@ class Agent:
         self.vector_store_memory = memory.VectorStoreMemory(
             num_query_results=2, character_name=self.character.name
         )
-        self.llm = llm_backend.LlmBackend("llama-cpp")
+        self.llm = llm_backend.LlmBackend("openai")
 
         self.game_mode = False
 

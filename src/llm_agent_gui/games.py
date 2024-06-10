@@ -194,7 +194,7 @@ class TicTacToe(ctk.CTkFrame):
             prompt=provisional_user_message, agent_answer=charater_reaction
         )
 
-        self.main_app.side_character_game_frame.tic_tac_toe.grid_remove()
+        self.main_app.character_image_game_frame.tic_tac_toe.grid_remove()
 
     def reset_game(self):
         self.board = [""] * 9
