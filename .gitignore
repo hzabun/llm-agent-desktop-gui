@@ -14,4 +14,4 @@ temp/
 # llm weights, chat history and test images
 llm_weights/
 history_logs/
-images/
+src/llm_agent_gui/images/
