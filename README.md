@@ -1,5 +1,5 @@
 # LLM agent desktop GUI
-A desktop GUI to interact with an LLM agent (chatbot which can use external tools).
+A desktop GUI to interact with an LLM agent (chatbot which can use external tools). Can play Tic-Tac-Toe and changes its picture based on sentiment.
 
 ![simple chat showcase](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/images/simple_chat.gif)
 
