@@ -10,6 +10,8 @@
     - [Usage](#usage)
   - [Production Considerations](#production-considerations)
 
+---
+
 A conversational AI system demonstrating agentic capabilities through the ReAct framework, production-grade RAG architecture, and sentiment-adaptive UI. Features local LLM deployment with GPU acceleration, ChromaDB vector store for long-term memory, and multi-model orchestration.
 
 **Core Capabilities:**
