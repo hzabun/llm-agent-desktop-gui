@@ -1,17 +1,5 @@
 # LLM Agent System with Multi-Tier Memory Architecture
 
-- [LLM Agent System with Multi-Tier Memory Architecture](#llm-agent-system-with-multi-tier-memory-architecture)
-  - [Description](#description)
-  - [System Architecture](#system-architecture)
-  - [At a Glance](#at-a-glance)
-  - [Technical Highlights](#technical-highlights)
-    - [Features](#features)
-  - [Installation](#installation)
-    - [Usage](#usage)
-  - [Production Considerations](#production-considerations)
-
----
-
 A conversational AI system demonstrating agentic capabilities through the ReAct framework, production-grade RAG architecture, and sentiment-adaptive UI. Features local LLM deployment with GPU acceleration, ChromaDB vector store for long-term memory, and multi-model orchestration.
 
 **Core Capabilities:**
@@ -121,14 +109,14 @@ graph TB
 - Specific character can be anyone from movies, video games, anime etc. (see "characters.json" for a list of characters I used)
 - Image of character changes based on the characters current emotion (currently only implemented for Goku)
 
-![simple chat showcase](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/images/simple_chat.gif)
+![simple chat showcase](https://github.com/my-account/llm-agent-desktop-gui/blob/main/images/simple_chat.gif)
 
 ## Installation
 
 1. Clone the repository:
 
 ```
-git clone https://github.com/hzabun/llm-agent-desktop-gui
+git clone https://github.com/my-account/llm-agent-desktop-gui
 cd llm-agent-desktop-gui
 ```
 
@@ -153,11 +141,11 @@ pip install -r requirements.txt
 4. Install [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
 
    - Follow the custom installation instructions for your machine
-   - Alternatively use an OpenAI API key by adding "openai" [here](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/agent.py#L24)
+   - Alternatively use an OpenAI API key by adding "openai" [here](https://github.com/my-account/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/agent.py#L24)
 
 5. Download an LLM and save it under _src/llm_agent_gui/llm_weights_
    - I used [Openhermes 2.5 Mistral 7B - GGUF](https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF)
-   - Make sure to update the path name to your LLM in **llm_backend.py** [here](https://github.com/hzabun/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/llm_backend.py#L26)
+   - Make sure to update the path name to your LLM in **llm_backend.py** [here](https://github.com/my-account/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/llm_backend.py#L26)
    - Tip: 7B models seem to struggle a bit with following ReAct format, bigger models recommended
 
 ### Usage
