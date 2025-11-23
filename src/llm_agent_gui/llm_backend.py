@@ -6,9 +6,7 @@ from transformers import pipeline
 
 
 class LlmBackend:
-
     def __init__(self, backend: str):
-
         self.classifier = pipeline(
             "text-classification",
             model="j-hartmann/emotion-english-distilroberta-base",
@@ -27,7 +25,7 @@ class LlmBackend:
             n_ctx=4096,
             chat_format="chatml",
             verbose=False,
-            n_gpu_layers=-1,
+            n_gpu_layers=-1,  # load all layers to GPU
         )
 
         self.inference_llm = self.inference_llama_cpp
@@ -58,7 +56,6 @@ class LlmBackend:
         return output["choices"][0]["message"]["content"]  # type: ignore
 
     def classify_sentiment(self, character_response: str):
-
         emotion_scores = self.classifier(character_response)[0]  # type: ignore
 
         max_emotion = max(emotion_scores, key=lambda x: x["score"])  # type: ignore
