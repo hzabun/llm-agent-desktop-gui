@@ -41,9 +41,9 @@ graph TB
     Agent --> Tools[Tool System]
 
     LLM --> LocalLLM[llama-cpp-python<br/>Local Inference]
-    LLM --> OpenAI[OpenAI API<br/>Optional]
+    LLM --> OpenAI[OpenAI API<br/>*optional*]
 
-    Memory --> Buffer[Short-term Buffer<br/>Last n messages]
+    Memory --> Buffer[Short-term Buffer<br/>Last *n* messages]
     Memory --> Summary[Mid-term Summary<br/>Rolling context]
     Memory --> Vector[Long-term Store<br/>ChromaDB RAG]
 
@@ -53,10 +53,10 @@ graph TB
     Sentiment --> UI
     Vector -.-> Agent
 
-    style Agent fill:#4A90E2
-    style Memory fill:#7ED321
-    style LLM fill:#F5A623
-    style Tools fill:#BD10E0
+    style Agent fill:#3b73b5
+    style Memory fill:#519c00
+    style LLM fill:#ae6f09
+    style Tools fill:#ac002f
 ```
 
 **Key Components:**
