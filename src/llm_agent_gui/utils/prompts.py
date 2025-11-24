@@ -30,11 +30,9 @@ def prepare_summarizer_prompt(
     character_name: str,
     user_name: str,
 ) -> list[dict[str, str]]:
-
     new_messages_formatted = ""
 
     for message in new_messages:
-
         if message["role"] == "system":  # TODO: check if this line is still necessary
             continue
         elif message["role"] == "assistant":
@@ -76,7 +74,6 @@ def prepare_system_chat_prompt(
     current_summary: str,
     context_sentences: str | list[Any],
 ) -> str:
-
     context_sentences_formatted = ""
 
     for sentence in context_sentences:
@@ -213,7 +210,6 @@ def prepare_game_quit_prompt(
     system_message: str,
     current_summary: str,
 ) -> str:
-
     return _GAME_QUIT_PROMPT.format(
         character_name=character.name,
         platform_type=character.platform_type,

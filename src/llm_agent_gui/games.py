@@ -212,9 +212,7 @@ class TicTacToe(ctk.CTkFrame):
         checked_board = False
 
         if self.initial_game_session:
-            current_summary = (
-                self.main_app.character_agent.summary_buffer_memory.load_summary_from_disk()
-            )
+            current_summary = self.main_app.character_agent.summary_buffer_memory.load_summary_from_disk()
 
             game_start_prompt = prompts.prepare_game_start_prompt(
                 user_name=self.main_app.character_agent.name_of_user,
@@ -226,9 +224,7 @@ class TicTacToe(ctk.CTkFrame):
             self.game_prompt = {"role": "system", "content": game_start_prompt}
 
         elif self.consecutive_game_session:
-            current_summary = (
-                self.main_app.character_agent.summary_buffer_memory.load_summary_from_disk()
-            )
+            current_summary = self.main_app.character_agent.summary_buffer_memory.load_summary_from_disk()
             game_continue_prompt = prompts.prepare_game_continue_prompt(
                 user_name=self.main_app.character_agent.name_of_user,
                 game="Tic-Tac-Toe",

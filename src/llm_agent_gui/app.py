@@ -13,7 +13,6 @@ from PIL import Image
 
 class ChooseCharacterSessionWindow(customtkinter.CTkToplevel):
     def __init__(self, cancellable: bool = False) -> None:
-
         super().__init__()
 
         available_characters = list(character_sessions.get_character_list().keys())
@@ -113,7 +112,6 @@ class App(customtkinter.CTk):
         self.create_widgets()
 
     def create_widgets(self) -> None:
-
         self.chat_history = customtkinter.CTkTextbox(self)
         self.chat_history.configure(state="disabled")
         self.chat_history.grid(row=0, padx=(20, 0), pady=(20, 0), sticky="nsew")
@@ -260,10 +258,9 @@ class CharacterImageGameFrame(customtkinter.CTkFrame):
         ]
 
         self.goku_emotion_images = {
-            "goku_"
-            + emotion: customtkinter.CTkImage(
+            "goku_" + emotion: customtkinter.CTkImage(
                 light_image=Image.open(
-                    fp=f"src/llm_agent_gui/images/goku/goku_" + emotion + ".png"
+                    fp="src/llm_agent_gui/images/goku/goku_" + emotion + ".png"
                 ),
                 size=(300, 300),
             )
@@ -283,7 +280,6 @@ class CharacterImageGameFrame(customtkinter.CTkFrame):
         self.create_widgets()
 
     def create_widgets(self):
-
         self.character_label_image = customtkinter.CTkLabel(
             self,
             image=self.character_images[self.main_app.character_agent.character.name],
@@ -317,7 +313,7 @@ class SessionButtonsFrame(customtkinter.CTkFrame):
     def create_widgets(self) -> None:
         self.change_character_image = customtkinter.CTkImage(
             light_image=Image.open(
-                fp=f"src/llm_agent_gui/images/buttons/change_character.png"
+                fp="src/llm_agent_gui/images/buttons/change_character.png"
             ),
             size=(25, 25),
         )
@@ -340,7 +336,7 @@ class SessionButtonsFrame(customtkinter.CTkFrame):
 
         self.reset_button_image = customtkinter.CTkImage(
             light_image=Image.open(
-                fp=f"src/llm_agent_gui/images/buttons/reset_conversation.png"
+                fp="src/llm_agent_gui/images/buttons/reset_conversation.png"
             ),
             size=(25, 25),
         )
@@ -457,7 +453,6 @@ class TypingSummarizingGameChoiceFrame(customtkinter.CTkFrame):
 
 class ChooseGameWindow(customtkinter.CTkToplevel):
     def __init__(self, main_app: App) -> None:
-
         super().__init__()
 
         self._user_input: str
@@ -530,7 +525,6 @@ class ChooseGameWindow(customtkinter.CTkToplevel):
 
 class ResetConversationWindow(customtkinter.CTkToplevel):
     def __init__(self) -> None:
-
         super().__init__()
 
         self._running: bool = False

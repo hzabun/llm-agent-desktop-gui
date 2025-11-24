@@ -7,7 +7,6 @@ from src.llm_agent_gui.utils import format_messages
 
 
 class SummaryBufferMemory:
-
     def __init__(self, buffer_size: int, character_name: str) -> None:
         self._buffer_size = buffer_size
         self._buffer_counter = 0
@@ -30,7 +29,6 @@ class SummaryBufferMemory:
         try:
             open(
                 self._SUMMARY_BUFFER_PATH.format(self.character_session),
-                "r",
             )
 
         except FileNotFoundError:
@@ -46,7 +44,6 @@ class SummaryBufferMemory:
         try:
             f = open(
                 self._SUMMARY_BUFFER_PATH.format(self.character_session),
-                "r",
             )
 
         except FileNotFoundError:
@@ -96,7 +93,6 @@ class SummaryBufferMemory:
     def load_summary_from_disk(self) -> str:
         with open(
             self._SUMMARY_BUFFER_PATH.format(self.character_session),
-            "r",
         ) as f:
             summary_buffer_logs = json.load(f)
             latest_summary = summary_buffer_logs[0]
@@ -108,7 +104,6 @@ class SummaryBufferMemory:
     def load_buffer_from_disk(self) -> list[dict[str, str]]:
         with open(
             self._SUMMARY_BUFFER_PATH.format(self.character_session),
-            "r",
         ) as f:
             summary_buffer_logs = json.load(f)
             last_messages = summary_buffer_logs[1]
@@ -134,7 +129,6 @@ class SummaryBufferMemory:
 
 
 class VectorStoreMemory:
-
     def __init__(
         self,
         num_query_results: int,
