@@ -195,7 +195,8 @@ class TestVectorStore:
             {"role": "assistant", "content": "General Kenobi"},
         ]
         character_name = "test_character"
-        vector_store.save_new_lines_as_vectors(new_lines, character_name)
+        user_name = "User"
+        vector_store.save_new_lines_as_vectors(new_lines, character_name, user_name)
         assert vector_store.collection.count() == len(new_lines)
 
     def test_retreive_related_information(
@@ -205,7 +206,7 @@ class TestVectorStore:
             {"role": "user", "content": "Hello there"},
             {"role": "assistant", "content": "General Kenobi"},
         ]
-        vector_store.save_new_lines_as_vectors(new_lines, "test_character")
+        vector_store.save_new_lines_as_vectors(new_lines, "test_character", "User")
 
         # Retrieve related information
         chatbot_answer = "Kenobi"
@@ -219,7 +220,7 @@ class TestVectorStore:
             {"role": "user", "content": "Hello there"},
             {"role": "assistant", "content": "General Kenobi"},
         ]
-        vector_store.save_new_lines_as_vectors(new_lines, "test_character")
+        vector_store.save_new_lines_as_vectors(new_lines, "test_character", "User")
 
         string_ids = vector_store.create_string_ids(4)
         assert string_ids == ["id2", "id3", "id4", "id5"]
@@ -229,22 +230,21 @@ class TestVectorStore:
             {"role": "user", "content": "Hello there"},
             {"role": "assistant", "content": "General Kenobi"},
         ]
-        vector_store.save_new_lines_as_vectors(new_lines, "test_character")
+        vector_store.save_new_lines_as_vectors(new_lines, "test_character", "User")
 
         vector_store.reset_collection("test_character")
 
         assert vector_store.collection.count() == 0
 
-    def test_get_full_chat_history(
-        self, vector_store: memory.VectorStoreMemory, setup, user_name: str
-    ):
+    def test_get_full_chat_history(self, vector_store: memory.VectorStoreMemory, setup):
+        user_name = "User"
         new_lines = [
             {"role": "user", "content": "Hello there"},
             {"role": "assistant", "content": "General Kenobi"},
             {"role": "user", "content": "General who?"},
             {"role": "assistant", "content": "Exactly."},
         ]
-        vector_store.save_new_lines_as_vectors(new_lines, "test_character")
+        vector_store.save_new_lines_as_vectors(new_lines, "test_character", user_name)
 
         chat_history = vector_store.get_full_chat_history()
 

@@ -23,6 +23,6 @@ def test_format_messages():
         {"role": "assistant", "content": "General Kenobi"},
     ]
     formatted_lines = format_messages.format_multiple_vector_store_messages(
-        message_lines=new_lines, character_name="test_character"
+        message_lines=new_lines, character_name="test_character", user_name="User"
     )
     assert "test_character: General Kenobi" in formatted_lines
