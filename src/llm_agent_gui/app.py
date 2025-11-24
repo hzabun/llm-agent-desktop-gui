@@ -1,14 +1,13 @@
 import tkinter
 
 import customtkinter
+from PIL import Image
 
 from src.llm_agent_gui import agent, games
 from src.llm_agent_gui.utils import character_sessions
 
 customtkinter.set_appearance_mode("system")
 customtkinter.set_default_color_theme("blue")
-
-from PIL import Image
 
 
 class ChooseCharacterSessionWindow(customtkinter.CTkToplevel):
@@ -354,12 +353,8 @@ class SessionButtonsFrame(customtkinter.CTkFrame):
             row=0,
             column=2,
         )
-        change_character_tooltip = Tooltip(
-            self.change_character_button, "Change character"
-        )
-        reset_conversation_tooltip = Tooltip(
-            self.reset_session_button, "Reset conversation"
-        )
+        Tooltip(self.change_character_button, "Change character")
+        Tooltip(self.reset_session_button, "Reset conversation")
 
     def change_character_handler(self) -> None:
         character_window = ChooseCharacterSessionWindow(cancellable=True)

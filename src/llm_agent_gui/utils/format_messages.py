@@ -6,7 +6,8 @@ def assign_multiple_roles_to_messages(
     roles: list[str], messages: list[str]
 ) -> list[dict[str, str]]:
     formatted_messages = [
-        {"role": role, "content": message} for role, message in zip(roles, messages)
+        {"role": role, "content": message}
+        for role, message in zip(roles, messages, strict=True)
     ]
 
     return formatted_messages

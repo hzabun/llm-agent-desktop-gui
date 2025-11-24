@@ -71,12 +71,14 @@ class SummaryBufferMemory:
             f.truncate()
             json.dump(summary_buffer_logs, f, indent=4)
 
-    def save_initial_buffer_on_disk(self, character_greeting: dict[str, str]) -> None:
+    def save_initial_buffer_on_disk(
+        self, character_greeting: list[dict[str, str]]
+    ) -> None:
         with open(
             self._SUMMARY_BUFFER_PATH.format(self.character_session),
             "w",
         ) as f:
-            new_lines_formatted = ["", [character_greeting]]
+            new_lines_formatted = ["", character_greeting]
             json.dump(new_lines_formatted, f, indent=4)
 
     def expand_buffer_on_disk(self, new_lines: list[dict[str, str]]) -> None:
