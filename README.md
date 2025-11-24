@@ -1,5 +1,11 @@
 # LLM Agent System with Multi-Tier Memory Architecture
 
+[![CI](https://github.com/hzabun/llm-agent-rag-system/actions/workflows/ci.yml/badge.svg)](https://github.com/hzabun/llm-agent-rag-system/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 A conversational AI system demonstrating agentic capabilities through the ReAct framework, production-grade RAG architecture, and sentiment-adaptive UI. Features local LLM deployment with GPU acceleration, ChromaDB vector store for long-term memory, and multi-model orchestration.
 
 **Core Capabilities:**
@@ -113,50 +119,141 @@ graph TB
 
 ## Installation
 
+### Prerequisites
+
+- Python 3.10 or higher
+- [uv](https://docs.astral.sh/uv/) package manager
+
+### Setup with uv
+
 1. Clone the repository:
 
-```
+```bash
 git clone https://github.com/my-account/llm-agent-desktop-gui
 cd llm-agent-desktop-gui
 ```
 
-2. Create and activate a virtual environment
+2. Install uv if you haven't already:
 
-```
-# For MacOS and Unix
-python3 -m venv venv
-source venv/bin/activate
+```bash
+# macOS and Linux
+curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# For Windows
-python -m venv venv
-.\venv\Scripts\activate
+# Windows
+powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
 3. Install dependencies:
 
-```
-pip install -r requirements.txt
-```
-
-4. Install [llama-cpp-python](https://github.com/abetlen/llama-cpp-python)
-
-   - Follow the custom installation instructions for your machine
-   - Alternatively use an OpenAI API key by adding "openai" [here](https://github.com/my-account/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/agent.py#L24)
-
-5. Download an LLM and save it under _src/llm_agent_gui/llm_weights_
-   - I used [Openhermes 2.5 Mistral 7B - GGUF](https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF)
-   - Make sure to update the path name to your LLM in **llm_backend.py** [here](https://github.com/my-account/llm-agent-desktop-gui/blob/main/src/llm_agent_gui/llm_backend.py#L26)
-   - Tip: 7B models seem to struggle a bit with following ReAct format, bigger models recommended
-
-### Usage
-
-Run main.py
-
-```
-python main.py
+```bash
+uv sync
 ```
 
-Engage with the character, change character if you like and play a game of Tic-Tac-Toe. All conversation is saved locally.
+4. **(Optional)** Set up pre-commit hooks for development:
+
+```bash
+uv run pre-commit install
+```
+
+## Usage
+
+### Choosing Your LLM Backend
+
+The application supports two backends, configured via the `LLM_BACKEND` environment variable.
+
+#### Option A: OpenAI API (Default - Recommended for Quick Start)
+
+1. Copy the example environment file:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+2. Edit `.env` and add your OpenAI API key:
+
+   ```
+   LLM_BACKEND=openai
+   OPENAI_API_KEY=your-api-key-here
+   ```
+
+3. Run the application:
+   ```bash
+   make run
+   # or: uv run python main.py
+   ```
+
+#### Option B: Local LLM with llama-cpp-python (Advanced)
+
+1. Install llama-cpp-python with GPU acceleration:
+
+   ```bash
+   # For NVIDIA GPUs with CUDA
+   make install-llm-cuda
+   # or: uv pip install llama-cpp-python --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu121
+
+   # For Apple Silicon (M1/M2/M3/M4)
+   make install-llm-metal
+   # or: CMAKE_ARGS="-DLLAMA_METAL=on" uv pip install llama-cpp-python
+
+   # For CPU only (slower)
+   uv pip install llama-cpp-python
+   ```
+
+2. Download a model (e.g., [Openhermes 2.5 Mistral 7B - GGUF](https://huggingface.co/TheBloke/OpenHermes-2.5-Mistral-7B-GGUF)) and place it in `src/llm_agent_gui/llm_weights/`
+
+3. Copy the example environment file and configure it:
+
+   ```bash
+   cp .env.example .env
+   ```
+
+4. Edit `.env` to use local LLM:
+
+   ```
+   LLM_BACKEND=llama-cpp
+   ```
+
+5. Run the application:
+   ```bash
+   make run
+   # or: uv run python main.py
+   ```
+
+### Using the Application
+
+Once running, you can:
+
+- Chat with AI characters (choose from predefined characters)
+- Play Tic-Tac-Toe with the agent
+- Change characters mid-conversation
+- All conversations are automatically saved locally
+
+## Development
+
+### Running Tests
+
+```bash
+# With uv
+uv run pytest
+
+# With coverage
+uv run pytest --cov=src --cov-report=html
+```
+
+### Code Quality
+
+This project uses `ruff` for linting and formatting:
+
+```bash
+# Lint
+uv run ruff check .
+
+# Format
+uv run ruff format .
+
+# Or use pre-commit
+uv run pre-commit run --all-files
+```
 
 ## Production Considerations
 

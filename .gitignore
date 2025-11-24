@@ -2,10 +2,15 @@
 .pytest_cache
 .venv
 .vscode
+.env
 .envrc
 .misc
 __pycache__
 .DS_STORE
+
+# uv
+.venv/
+uv.lock
 
 # snippets, tests and outdated code
 archive/

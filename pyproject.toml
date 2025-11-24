@@ -1,0 +1,42 @@
+[project]
+name = "llm-agent-rag-system"
+version = "0.1.0"
+description = "A conversational AI system with agentic capabilities, multi-tier memory architecture, and local LLM deployment"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "chromadb>=0.5.0",
+    "customtkinter>=5.2.2",
+    "openai>=1.33.0",
+    "python-dotenv>=1.0.0",
+    "torch>=2.3.1",
+    "transformers>=4.41.2",
+]
+
+[project.optional-dependencies]
+# llama-cpp-python requires custom installation with CMAKE_ARGS for GPU support
+# See installation instructions in README.md
+local-llm = ["llama-cpp-python>=0.2.77"]
+
+[dependency-groups]
+dev = ["pre-commit>=4.3.0", "pytest>=7.0", "ruff>=0.14.1"]
+test = ["pytest>=7.0", "pytest-cov>=4.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["test"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W", "UP", "B"]
+ignore = ["E501"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"

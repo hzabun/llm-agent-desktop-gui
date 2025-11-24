@@ -1,3 +1,4 @@
+import os
 import re
 from typing import Any
 
@@ -6,7 +7,6 @@ from src.llm_agent_gui.utils import character_sessions, format_messages, prompts
 
 
 class Agent:
-
     def __init__(self, character_name: str) -> None:
         self.character = Character(character_name=character_name)
         self.name_of_user = "Halil"  # Add any name you want to be called as
@@ -21,7 +21,9 @@ class Agent:
         self.vector_store_memory = memory.VectorStoreMemory(
             num_query_results=2, character_name=self.character.name
         )
-        self.llm = llm_backend.LlmBackend("openai")
+        # Backend can be configured via LLM_BACKEND env var: "openai" or "llama-cpp"
+        backend = os.getenv("LLM_BACKEND", "openai")
+        self.llm = llm_backend.LlmBackend(backend)
 
         self.game_mode = False
 
@@ -99,7 +101,6 @@ class Agent:
         self, user_message: str, character_answer: str
     ) -> None:
         if self.is_new_chat:
-
             character_greeting_formatted = format_messages.assign_role_to_message(
                 role="assistant", message=character_answer
             )
@@ -118,7 +119,6 @@ class Agent:
         self,
         character_greeting: dict[str, str],
     ) -> None:
-
         self.summary_buffer_memory.save_initial_buffer_on_disk(
             character_greeting=character_greeting
         )
@@ -162,7 +162,6 @@ class Agent:
 
 
 class Character:
-
     def __init__(self, character_name: str) -> None:
         self.name = character_name
 

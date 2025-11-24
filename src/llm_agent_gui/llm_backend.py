@@ -1,6 +1,12 @@
 from typing import Any
 
-from llama_cpp import Llama
+try:
+    from llama_cpp import Llama
+
+    LLAMA_CPP_AVAILABLE = True
+except ImportError:
+    LLAMA_CPP_AVAILABLE = False
+
 from openai import OpenAI
 from transformers import pipeline
 
@@ -20,6 +26,15 @@ class LlmBackend:
             raise Exception("No valid backend option passed!")
 
     def initialize_llama_cpp(self):
+        if not LLAMA_CPP_AVAILABLE:
+            raise ImportError(
+                "llama-cpp-python is not installed. "
+                "Install it with GPU support using:\n"
+                "  make install-llm-cuda  (for NVIDIA GPUs)\n"
+                "  make install-llm-metal (for Apple Silicon)\n"
+                "Or set LLM_BACKEND=openai to use OpenAI API instead."
+            )
+
         self.llama_cpp_llm = Llama(
             model_path="src/llm_agent_gui/llm_weights/openhermes-2.5-mistral-7b.Q5_K_M.gguf",
             n_ctx=4096,
