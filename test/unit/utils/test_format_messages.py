@@ -2,7 +2,6 @@ from src.llm_agent_gui.utils import format_messages
 
 
 def test_assign_multiple_roles_to_messages():
-
     roles = ["user", "assistant"]
     messages = ["What a beautiful day", "But it's storming outside"]
 

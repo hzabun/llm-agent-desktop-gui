@@ -8,7 +8,6 @@ from src.llm_agent_gui import memory
 
 
 class TestSummaryBufferMemory:
-
     @pytest.fixture
     def summary_buffer(self) -> memory.SummaryBufferMemory:
         return memory.SummaryBufferMemory(5, "test_character")
@@ -42,7 +41,7 @@ class TestSummaryBufferMemory:
 
             summary_buffer.create_character_file_if_missing()
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == ["", []]
 
@@ -58,7 +57,7 @@ class TestSummaryBufferMemory:
 
             summary_buffer.reset_character_session_on_disk()
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == ["", []]
 
@@ -77,7 +76,7 @@ class TestSummaryBufferMemory:
 
             summary_buffer.save_new_summary_on_disk("new summary")
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == ["new summary", [{"message": "some message"}]]
 
@@ -93,7 +92,7 @@ class TestSummaryBufferMemory:
 
             summary_buffer.save_initial_buffer_on_disk([{"message": "test"}])
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == ["", [{"message": "test"}]]
 
@@ -111,7 +110,7 @@ class TestSummaryBufferMemory:
 
             summary_buffer.expand_buffer_on_disk([{"message": "new"}])
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == [
                     "some summary",
@@ -160,13 +159,12 @@ class TestSummaryBufferMemory:
 
             summary_buffer.reset_buffer_on_disk()
 
-            with open(os.path.join(tmpdir, "test_character.json"), "r") as f:
+            with open(os.path.join(tmpdir, "test_character.json")) as f:
                 data = json.load(f)
                 assert data == ["some summary", []]
 
 
 class TestVectorStore:
-
     @pytest.fixture
     def vector_store(self) -> memory.VectorStoreMemory:
         vector_store_instance = memory.VectorStoreMemory(
